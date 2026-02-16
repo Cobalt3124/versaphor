@@ -1,0 +1,892 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+/* Tambahan: Agar saat scroll, judul section tidak tertutup navbar */
+.glass-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 80px 50px;
+    width: calc(100% - 40px);
+
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(12px);
+
+    border-radius: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+@media(max-width:768px){
+    .glass-section{
+        padding: 60px 25px;
+        border-radius: 25px;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(
+        120deg,
+        #f0f4ff,
+        #ffffff,
+        #eef6ff
+    );
+    background-size: 300% 300%;
+    animation: bgFlow 12s ease infinite;
+    
+}
+
+.orb1 .bg-orb {
+    background: radial-gradient(circle, #004a99, transparent);
+}
+
+.orb2 .bg-orb {
+    background: radial-gradient(circle, #6ec1ff, transparent);
+}
+
+.orb3 .bg-orb {
+    background: radial-gradient(circle, #a367ff, transparent);
+}
+
+.bg-orb {
+    z-index: -1;
+    animation: floatOrb 10s ease-in-out infinite,
+                 drift 7s linear infinite;
+    transition: transform 0.03s ease-out;
+    will-change: transform;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    filter: blur(55px);
+    opacity: 0.7;
+    box-shadow: 0 0 140px rgba(0, 74, 153, 0.35);
+
+}
+
+.orb-wrap {
+    position: fixed;
+    z-index: -1;
+    animation: floatOrb 18s ease-in-out infinite;
+    overflow: visible;
+    pointer-events: none;
+
+}
+
+/* Orb Variations */
+.orb1 {
+    width: 420px;
+    height: 420px;
+    background: none; /* FIX */
+    top: 10%;
+    left: -120px;
+    animation-duration: 14s;
+}
+
+.orb2 {
+    width: 380px;
+    height: 380px;
+    background: none; /* FIX */
+    bottom: 15% ;
+    right: -100px;
+    animation-delay: 3s;
+    animation-duration: 18s;
+}
+
+.orb3 {
+    width: 350px;
+    height: 350px;
+    background: none; /* FIX */
+    top: 60%;
+    left: 50%;
+    animation-delay: 6s;
+    animation-duration: 22s;
+}
+
+@keyframes drift {
+    0%   { transform: translate(0,0) scale(1); }
+    50%  { transform: translate(120px,-80px) scale(1.15); }
+    100% { transform: translate(0,0) scale(1); }
+  }
+  
+
+  @keyframes floatOrb {
+    0%   { transform: translate(0,0) scale(1); }
+    25%  { transform: translate(90px,-60px) scale(1.15); }
+    50%  { transform: translate(-80px,-120px) scale(0.9); }
+    75%  { transform: translate(-120px,70px) scale(1.2); }
+    100% { transform: translate(0,0) scale(1); }
+  }
+.container {
+    width: 100%;
+    max-width: 1200px;
+    height: 600px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 60px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    margin: 15px auto 0 auto;
+}
+
+.hero-wrapper {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, 
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.55)
+    ), 
+                url('images/versapor\ depan\ fst.jpg')center/cover no-repeat;
+    position: relative;
+    border-radius: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.9s ease;
+  }
+  
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Variasi animasi */
+  
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: all 0.9s ease;
+  }
+  
+  .reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: all 0.9s ease;
+  }
+  
+  .reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .reveal-zoom {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.9s ease;
+  }
+  
+  .reveal-zoom.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .grid-item:nth-child(1) { transition-delay: 0.1s; }
+.grid-item:nth-child(2) { transition-delay: 0.2s; }
+.grid-item:nth-child(3) { transition-delay: 0.3s; }
+.grid-item:nth-child(4) { transition-delay: 0.4s; }
+
+.nav-links li a {
+    position: relative;
+    padding: 6px 0;
+}
+
+/* Link Active Highlight */
+.nav-links li a.active {
+    color: #004a99;
+}
+
+/* Underline animasi */
+.nav-links li a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+    background: #004a99;
+
+    border-radius: 5px;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 50px;
+    width: 100%;
+    z-index: 10;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.logo-versa {
+    width: 80px;
+    height: 80px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    background: rgba(255, 255, 255, 0.10); /* Efek Transparan */
+    backdrop-filter: blur(5px); /* Efek Blur (Glassmorphism) */
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-links li a {
+    text-decoration: none;
+    text-shadow: 0 8px 10px rgba(0,0,0,0.15);
+    color: black;
+    font-weight: 700;
+    font-size: 13px;
+    margin: 0 15px;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #004a99;
+}
+
+.btn-portfolio {
+    background-color: white;
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 12px 35px;
+    border-radius: 30px;
+    font-size: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Content Card Styling */
+.content-card {
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    
+    width: 520px;
+    padding: 45px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(3px);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 2555, 255, 0.25);
+    outline: 1px solid rgba(0,74, 153,0.15);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+    
+}
+
+.title {
+    color: white;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.25); /* Warna biru navy sesuai desain */
+    font-size: 56px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.description {
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 450px;
+}
+
+/* Responsif Sederhana */
+@media (max-width: 992px) {
+    .content-card {
+        width: 100%;
+        border-top-right-radius: 40px;
+        padding: 30px;
+    }
+    .title { font-size: 40px; }
+    .nav-links { display: none; } /* Menyembunyikan menu pada layar kecil */
+}
+
+.achievement-section {
+    padding: 80px 0;
+    background-color: transparent;
+    text-align: center; 
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    position: relative;
+    z-index: 1;
+}
+
+.achievement-inner {
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.section-title {
+    color: #004a99;
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 50px;
+}
+
+/* Container Slider */
+.slider {
+    width: 100%;
+    overflow: hidden; /* Sembunyikan card yang keluar layar */
+    position: relative;
+    padding: 30px 0;
+    border-radius: 30px;
+}
+
+/* Track yang akan bergeser */
+.slide-track {
+    display: flex;
+    width: calc(100% - 40px); /* Lebar card * jumlah total card + gap */
+    gap: 20px;
+    animation: scroll 25s linear infinite;
+}
+
+/* Animasi Auto-Scroll */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-320px * 4 - 80px)); } /* Geser sejauh 4 card pertama */
+}
+
+/* Styling Card */
+.achievement-card {
+    width: 300px;
+    flex-shrink: 0;
+
+    background: rgba(255, 255, 255, 0.25); /* transparan */
+    backdrop-filter: blur(14px);           /* glass blur */
+    -webkit-backdrop-filter: blur(14px);
+
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.35);
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.achievement-card:hover {
+    transform: translateY(-10px);
+}
+
+.achievement-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    opacity: 0.92;
+}
+
+.card-body {
+    padding: 20px;
+    text-align: left;
+}
+
+.card-body p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #888;
+    font-weight: 500;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: #e63946; /* Warna merah sesuai desain */
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+/* Pause animasi saat di-hover */
+.slider:hover .slide-track {
+    animation-play-state: paused;
+}
+
+/* GALLERY SECTION */
+.gallery-section {
+    width: 100%;
+    max-width: 1200px;
+    padding: 100px 50px;
+    text-align: center;
+}
+
+.section-subtitle {
+    color: #666;
+    font-size: 16px;
+    margin-top: -30px;
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
+/* Filter Buttons Styling */
+.gallery-filter {
+    display: flex;
+    justify-content: flex-start; /* Sesuai desain, tombol agak ke kiri */
+    gap: 15px;
+    margin-bottom: 40px;
+    padding-left: 10px;
+}
+
+.btn-filter {
+    padding: 10px 25px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: white;
+    color: #004a99;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-filter.active {
+    background: #004a99;
+    color: white;
+    border-color: #004a99;
+}
+
+.btn-filter:hover {
+    background: #f0f0f0;
+}
+
+/* Bento Grid Layout */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Kolom Utama */
+    grid-auto-rows: 200px; /* Tinggi dasar setiap baris */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.grid-item {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);    
+    opacity: 0;
+    display: none;
+    transform: translateY(30px) scale(0.97) ;
+    pointer-events: none;
+    transition: 
+        opacity 0.5s ease,
+        transform 0.5s ease;
+    
+}
+
+.grid-item.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    animation: popUp 0.6s ease forwards;
+}
+
+@keyframes popUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.92);
+        filter: blur(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+}
+
+.grid-item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.grid-item :hover {
+    transform: scale(1.02);
+    transition: 0.3s ease;
+}
+
+.grid-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Variasi Ukuran Grid Sesuai Desain */
+.item-1 { grid-column: span 1; grid-row: span 1.5; } /* Gambar kiri atas */
+.item-2 { grid-column: span 1; grid-row: span 1.2; } /* Gambar tengah atas */
+.item-tall { grid-column: span 1; grid-row: span 2; } /* Gambar kanan yang tinggi */
+.item-4 { grid-column: span 1; grid-row: span 1.5; } /* Gambar kiri bawah */
+.item-wide { grid-column: span 1; grid-row: span 1.2; } /* Gambar tengah bawah */
+.item-6 { grid-column: span 1; grid-row: span 0.8; } /* Gambar kanan bawah */
+
+/* Responsif untuk Mobile */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: 250px;
+    }
+    .grid-item { grid-column: span 1 !important; grid-row: span 1 !important; }
+    .gallery-filter { overflow-x: auto; padding-bottom: 10px; }
+}
+
+/* ABOUT OUR LEADER SECTION */
+.leader-section {
+    width: 100%;
+    max-width: 1200px;
+    padding: 80px 0;
+    text-align: center;
+}
+
+/* Legend Styling */
+.leader-legend {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.3s ease;
+    transform: scale(1);
+    
+}
+
+.legend-item:hover {
+    opacity: 0.8;
+}
+
+.legend-item.active {
+    opacity: 1;
+    transform: scale(1.088);
+}
+
+.leader-profile{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+    transition: all 0.6s ease;
+    filter: blur(8px);
+
+}
+
+.leader-profile.active-leader{
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    filter: blur(0);
+}
+
+.leader-profile.exit-left {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.leader-profile.exit-right {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.dot.purple { background-color: #a367a7; }
+.dot.blue { background-color: #0086c9; }
+
+.role-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #888;
+}
+
+.role-text.active {
+    color: #000; /* Warna lebih tegas untuk yang terpilih */
+}
+
+/* Profile Content Layout */
+.leader-content {
+    position: relative;
+    min-height: 500px;
+    overflow: hidden;
+}
+
+.leader-image-card {
+    width: 350px;
+    height: 450px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: 0.6 ease;
+    transform: scale(0.97);
+    transform: scale(1);
+}
+
+.leader-image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.leader-info-card {
+    background: white;
+    width: 550px;
+    padding: 60px;
+    border-radius: 30px;
+    text-align: left;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+    transition: 0.6 ease;
+    transform: scale(0.97);
+    transform: scale(1);
+}
+
+.leader-name {
+    color: #001a57; /* Navy sangat gelap sesuai desain */
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.leader-bio {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Responsif Mobile */
+@media (max-width: 992px) {
+    .leader-content {
+        flex-direction: column;
+    }
+    .leader-info-card, .leader-image-card {
+        width: 100%;
+        max-width: 450px;
+    }
+    .leader-info-card {
+        padding: 40px;
+    }
+}
+
+/* FOOTER STYLING */
+.footer {
+    width: 100%;
+    margin-top: 120px;
+    padding: 90px 50px 35px;
+
+    /* Smooth Gradient Background */
+    background: linear-gradient(
+        to top,
+        rgba(0, 35, 90, 0.96),
+        rgba(0, 74, 153, 0.88)
+    );
+
+    /* Glass Effect */
+    backdrop-filter: blur(18px);
+
+    /* Soft Border + Glow */
+    border-top: 1px solid rgba(255,255,255,0.14);
+    border-radius: 55px 55px 0 0;
+
+    box-shadow: 0 -20px 60px rgba(0,0,0,0.18);
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle Light Overlay */
+.footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(
+        circle at top,
+        rgba(255,255,255,0.12),
+        transparent 70%
+    );
+
+    pointer-events: none;
+}
+
+/* ===========================
+   FOOTER GRID
+=========================== */
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 80px;
+
+    position: relative;
+    z-index: 2;
+}
+
+/* ===========================
+   BRAND SECTION
+=========================== */
+
+.footer-brand h2 {
+    font-size: 34px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -1px;
+    margin-bottom: 18px;
+}
+
+.footer-brand p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.78);
+
+    max-width: 340px;
+}
+
+/* ===========================
+   LINK GROUPS
+=========================== */
+
+.footer-links h3,
+.footer-social h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Links */
+.footer-links a,
+.footer-social a {
+    display: block;
+    margin-bottom: 13px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    text-decoration: none;
+    color: rgba(255,255,255,0.72);
+
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+/* Premium Hover */
+.footer-links a:hover,
+.footer-social a:hover {
+    color: white;
+    transform: translateX(8px);
+}
+
+/* Underline Glow Effect */
+.footer-links a::after,
+.footer-social a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+
+    width: 0%;
+    height: 2px;
+
+    background: rgba(255,255,255,0.75);
+    transition: 0.3s ease;
+}
+
+.footer-links a:hover::after,
+.footer-social a:hover::after {
+    width: 55%;
+}
+
+/* ===========================
+   FOOTER BOTTOM
+=========================== */
+
+.footer-bottom {
+    margin-top: 70px;
+    padding-top: 25px;
+
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+
+    color: rgba(255,255,255,0.65);
+
+    border-top: 1px solid rgba(255,255,255,0.14);
+
+    position: relative;
+    z-index: 2;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 900px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: left;
+    }
+
+    .footer {
+        padding: 70px 30px 25px;
+        border-radius: 40px 40px 0 0;
+    }
+}
+
